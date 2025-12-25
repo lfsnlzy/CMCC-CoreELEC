@@ -38,24 +38,16 @@ echo "Decompressing SYSTEM image"
 sudo unsquashfs -d ${system_root} ${mount_point}/SYSTEM
 
 echo "Copying modules-load conf for uwe5621ds"
-sudo cp ${common_files}/wifi_dummy.conf ${modules_load_path}/wifi_dummy.conf
+sudo cp ${common_files}/wifi_dummy.conf ${modules_load_path}/wifi_dummy.conf # /storage/.config/modules-load.d
 sudo chown root:root ${modules_load_path}/wifi_dummy.conf
 sudo chmod 0664 ${modules_load_path}/wifi_dummy.conf
 
-# /storage/.config/modules-load.d
-#chown root:root /storage/.config/modules-load.d/wifi_dummy.conf
-#chmod 0664 /storage/.config/modules-load.d/wifi_dummy.conf
 
 echo "Copying systemd service file for uwe5621ds"
-sudo cp ${common_files}/sprd_sdio-firmware-aml.service ${systemd_path}/sprd_sdio-firmware-aml.service
+sudo cp ${common_files}/sprd_sdio-firmware-aml.service ${systemd_path}/sprd_sdio-firmware-aml.service # /storage/.config/system.d
 sudo chown root:root ${systemd_path}/sprd_sdio-firmware-aml.service
 sudo chmod 0664 ${systemd_path}/sprd_sdio-firmware-aml.service
 sudo ln -s ../sprd_sdio-firmware-aml.service ${systemd_path}/multi-user.target.wants/sprd_sdio-firmware-aml.service
-
-# /storage/.config/system.d
-#chown root:root /storage/.config/system.d/sprd_sdio-firmware-aml.service
-#chmod 0664 /storage/.config/system.d/sprd_sdio-firmware-aml.service
-#systemctl daemon-reload
 #systemctl enable --now sprd_sdio-firmware-aml.service
 
 echo "Copying fs-resize script"
