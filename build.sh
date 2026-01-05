@@ -77,11 +77,6 @@ sudo umount -d ${mount_point}
 echo "Mounting CoreELEC data partition"
 sudo mount -o loop,offset=541065216 ${source_img_name}.img ${mount_point}
 
-#echo "Copying kodi config files"
-#sudo cp ${common_files}/backspace.xml ${kodi_userdata}/keymaps/backspace.xml
-#sudo chown root:root ${kodi_userdata}/keymaps/backspace.xml
-#sudo chmod 0644 ${kodi_userdata}/keymaps/backspace.xml
-
 echo "Unmounting CoreELEC data partition"
 sudo umount -d ${mount_point}
 echo "Deleting mount point"
